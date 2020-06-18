@@ -44,6 +44,7 @@ build: decrypt
 	@ git add $(OUTPUT_PUBLIC_ONLY)
 
 	@ [[ -f $(OUTPUT) ]] && rm -f $(OUTPUT)
+	@ cp $(OUTPUT_PUBLIC_ONLY) $(OUTPUT)
 	@ for FILE in $(RECORDS); do \
 		grep -v -e '^!' -h $${FILE} | sed 's/[[:space:]]*$$//' | grep '\S'  | sort -u | tee -a $(OUTPUT) ; \
 	done
